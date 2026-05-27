@@ -1,0 +1,160 @@
+[
+  {
+    "question": "Show claims by severity",
+    "semanticQuery": {
+      "domain": "claims",
+      "dimensions": [
+        "oem_name"
+      ],
+      "metric": "sum",
+      "metricColumn": "severity",
+      "selectColumns": [
+        "oem_name"
+      ],
+      "filters": {},
+      "limit": 5000,
+      "chartType": "bar"
+    }
+  },
+  {
+    "question": "Show claims for Honda",
+    "semanticQuery": {
+      "domain": "claims",
+      "dimensions": [],
+      "metric": "",
+      "metricColumn": "",
+      "selectColumns": [
+        "claim_id",
+        "part_number",
+        "severity",
+        "oem_name",
+        "claim_cost"
+      ],
+      "filters": {
+        "oem_name": [
+          "Honda"
+        ]
+      },
+      "limit": 5000,
+      "chartType": "table"
+    }
+  },
+  
+  {
+    "question": "Show claim cost by OEM",
+    "semanticQuery": {
+      "domain": "claims",
+      "dimensions": [
+        "oem_name"
+      ],
+      "metric": "sum",
+      "metricColumn": "claim_cost",
+      "selectColumns": [
+        "oem_name"
+      ],
+      "filters": {},
+      "limit": 5000,
+      "chartType": "bar"
+    }
+  },
+  {
+    "question": "Show SLA breached escalation count by level",
+    "semanticQuery": {
+        "domain": "escalations",
+        "dimensions": ["escalation_level"],
+        "metric": "count",
+        "metricColumn": "*",
+        "selectColumns": [
+          "escalation_level"
+        ],
+        "filters": {
+          "sla_breached_flag": [
+            "true"
+          ]
+        },
+        "limit": 5000,
+        "chartType": "bar"
+      }
+  },
+  {
+    "question": "Show critical claims",
+    "semanticQuery": {
+      "domain": "claims",
+      "dimensions": [],
+      "metric": "",
+      "metricColumn": "",
+      "selectColumns": [
+        "claim_id",
+        "part_number",
+        "severity",
+        "oem_name",
+        "claim_cost"
+      ],
+      "filters": {
+        "severity": [
+          "Critical"
+        ]
+      },
+      "limit": 5000,
+      "chartType": "table"
+    }
+  },
+  {
+    "question": "Show claim count by OEM",
+    "semanticQuery": {
+      "domain": "claims",
+      "dimensions": [
+        "oem_name"
+      ],
+      "metric": "count",
+      "metricColumn": "*",
+      "selectColumns": [
+        "oem_name"
+      ],
+      "filters": {},
+      "limit": 5000,
+      "chartType": "bar"
+    }
+  },
+
+  {
+    "question": "give claim_id and part_number by severity for Honda",
+  "semanticQuery": {
+    "domain": "claims",
+    "dimensions": [],
+    "metric": "",
+    "metricColumn": "",
+    "selectColumns": [
+      "claim_id",
+      "part_number",
+      "severity"
+    ],
+    "filters": {
+      "oem_name": [
+        "Honda"
+      ]
+    },
+    "limit": 5000,
+    "chartType": "table"
+  }
+
+  },
+
+  {
+  "question": "Show critical severity claims by OEM",
+  "semanticQuery": {
+    "domain": "claims",
+    "dimensions": ["oem_name"],
+    "metric": "count",
+    "metricColumn": "*",
+    "selectColumns": ["oem_name"],
+    "filters": {
+      "severity": ["Critical"]
+    },
+    "limit": 5000,
+    "chartType": "bar"
+  }
+}
+
+  
+]

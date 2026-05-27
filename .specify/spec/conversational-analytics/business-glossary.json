@@ -1,0 +1,111 @@
+{
+  "businessTerms": [
+    {
+      "term": "hot button indicator",
+      "meaning": "critical claims and escalations requiring executive attention",
+      "category": "executive"
+    },
+    {
+      "term": "OEM",
+      "meaning": "vehicle manufacturer",
+      "category": "organization"
+    },
+    {
+      "term": "claim",
+      "meaning": "quality issue raised against supplied automotive parts",
+      "category": "claims"
+    },
+    {
+      "term": "escalation",
+      "meaning": "critical issue requiring higher management attention",
+      "category": "escalation"
+    },
+    {
+      "term": "severity",
+      "meaning": "criticality level of the claim",
+      "category": "claims",
+      "allowedValues": [
+        "Critical",
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    {
+      "term": "critical claim",
+      "meaning": "high severity claim requiring immediate action",
+      "category": "claims"
+    },
+    {
+      "term": "SLA breached",
+      "meaning": "escalation exceeded agreed resolution timeline",
+      "category": "escalation"
+    },
+    {
+      "term": "claim cost",
+      "meaning": "financial impact associated with a claim",
+      "category": "financial"
+    },
+    {
+      "term": "warranty claim",
+      "meaning": "claim covered under warranty agreement",
+      "category": "claims"
+    },
+    {
+      "term": "repeat issue",
+      "meaning": "same defect occurring multiple times",
+      "category": "claims"
+    },
+    {
+      "term": "supplier responsibility",
+      "meaning": "percentage responsibility attributed to supplier",
+      "category": "claims"
+    },
+    {
+      "term": "executive review",
+      "meaning": "management review required for high impact escalation",
+      "category": "executive"
+    },
+    {
+      "term": "escalation aging",
+      "meaning": "number of days escalation remains unresolved",
+      "category": "escalation"
+    },
+    {
+      "term": "Ford",
+      "meaning": "OEM manufacturer",
+      "mapsTo": {
+        "table": "part_claim",
+        "column": "oem_name",
+        "value": "Ford"
+      }
+    },
+    {
+      "term": "Honda",
+      "meaning": "OEM manufacturer",
+      "mapsTo": {
+        "table": "part_claim",
+        "column": "oem_name",
+        "value": "Honda"
+      }
+    },
+    {
+      "term": "GM",
+      "meaning": "OEM manufacturer",
+      "mapsTo": {
+        "table": "part_claim",
+        "column": "oem_name",
+        "value": "GM"
+      }
+    },
+    {
+      "term": "Stellantis",
+      "meaning": "OEM manufacturer",
+      "mapsTo": {
+        "table": "part_claim",
+        "column": "oem_name",
+        "value": "Stellantis"
+      }
+    }
+  ]
+}

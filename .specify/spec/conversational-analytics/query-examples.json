@@ -1,0 +1,129 @@
+[
+  {
+    "question": "Show claims by severity",
+    "semanticQuery": {
+      "domain": "claims",
+      "metric": "count",
+      "dimensions": [ "severity" ],
+      "filters": {},
+      "chartType": "bar",
+      "limit": 5000
+    }
+  },
+  {
+    "question": "Show claims for Honda",
+    "semanticQuery": {
+      "domain": "claims",
+      "metric": "details",
+      "dimensions": [],
+      "filters": {
+        "oem_name": [ "Honda" ]
+      },
+      "chartType": "table",
+      "limit": 5000
+    }
+  },
+  {
+    "question": "Show claims by severity for Honda and Ford",
+    "semanticQuery": {
+      "domain": "claims",
+      "metric": "count",
+      "dimensions": [ "severity" ],
+      "filters": {
+        "oem_name": [ "Honda", "Ford" ]
+      },
+      "chartType": "bar",
+      "limit": 5000
+    }
+  },
+  {
+    "question": "Show claim cost by OEM",
+    "semanticQuery": {
+      "domain": "claims",
+      "metric": "sum",
+      "metricField": "claim_cost",
+      "dimensions": [ "oem_name" ],
+      "filters": {},
+      "chartType": "bar",
+      "limit": 5000
+    }
+  },
+  {
+    "question": "Show SLA breached escalations",
+    "semanticQuery": {
+      "domain": "escalations",
+      "metric": "details",
+      "dimensions": [],
+      "filters": {
+        "sla_breached_flag": [ true ]
+      },
+      "chartType": "table",
+      "limit": 5000
+    }
+  },
+  {
+    "question": "Show escalation aging by OEM",
+    "semanticQuery": {
+      "domain": "escalations",
+      "metric": "avg",
+      "metricField": "escalation_aging",
+      "dimensions": [ "oem_name" ],
+      "filters": {},
+      "chartType": "bar",
+      "limit": 5000
+    }
+  },
+  {
+    "question": "Show critical claims",
+    "semanticQuery": {
+      "domain": "claims",
+      "metric": "details",
+      "dimensions": [],
+      "filters": {
+        "severity": [ "Critical" ]
+      },
+      "chartType": "table",
+      "limit": 5000
+    }
+  },
+  {
+    "question": "Show critical claims for Honda",
+    "semanticQuery": {
+      "domain": "claims",
+      "metric": "details",
+      "dimensions": [],
+      "filters": {
+        "severity": [ "Critical" ],
+        "oem_name": [ "Honda" ]
+      },
+      "chartType": "table",
+      "limit": 5000
+    }
+  },
+  {
+    "question": "Show warranty claims by OEM",
+    "semanticQuery": {
+      "domain": "claims",
+      "metric": "count",
+      "dimensions": [ "oem_name" ],
+      "filters": {
+        "warranty_indicator": [ true ]
+      },
+      "chartType": "bar",
+      "limit": 5000
+    }
+  },
+  {
+    "question": "Show repeat issues by severity",
+    "semanticQuery": {
+      "domain": "claims",
+      "metric": "count",
+      "dimensions": [ "severity" ],
+      "filters": {
+        "repeat_issue_flag": [ true ]
+      },
+      "chartType": "bar",
+      "limit": 5000
+    }
+  }
+]

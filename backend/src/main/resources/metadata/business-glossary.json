@@ -1,0 +1,173 @@
+{
+  "businessTerms": [
+    {
+      "term": "claim",
+      "meaning": "Quality or warranty issue raised against supplied automotive parts",
+      "category": "Claims",
+      "mapsTo": {
+        "domain": "claims",
+        "table": "part_claim"
+      }
+    },
+    {
+      "term": "claims",
+      "meaning": "Quality or warranty issues raised against supplied automotive parts",
+      "category": "Claims",
+      "mapsTo": {
+        "domain": "claims",
+        "table": "part_claim"
+      }
+    },
+    {
+      "term": "OEM",
+      "meaning": "Vehicle manufacturer",
+      "category": "OEM",
+      "mapsTo": {
+        "column": "oem_name"
+      }
+    },
+    {
+      "term": "manufacturer",
+      "meaning": "Vehicle manufacturer or OEM",
+      "category": "OEM",
+      "mapsTo": {
+        "column": "oem_name"
+      }
+    },
+    {
+      "term": "Honda",
+      "meaning": "OEM manufacturer",
+      "category": "OEM",
+      "mapsTo": {
+        "domain": "claims",
+        "column": "oem_name",
+        "value": "Honda"
+      }
+    },
+    {
+      "term": "Ford",
+      "meaning": "OEM manufacturer",
+      "category": "OEM",
+      "mapsTo": {
+        "domain": "claims",
+        "column": "oem_name",
+        "value": "Ford"
+      }
+    },
+    {
+      "term": "Toyota",
+      "meaning": "OEM manufacturer",
+      "category": "OEM",
+      "mapsTo": {
+        "domain": "claims",
+        "column": "oem_name",
+        "value": "Toyota"
+      }
+    },
+    {
+      "term": "Nissan",
+      "meaning": "OEM manufacturer",
+      "category": "OEM",
+      "mapsTo": {
+        "domain": "claims",
+        "column": "oem_name",
+        "value": "Nissan"
+      }
+    },
+    {
+      "term": "severity",
+      "meaning": "Criticality level of the claim",
+      "category": "Severity",
+      "mapsTo": {
+        "column": "severity"
+      }
+    },
+    {
+      "term": "critical",
+      "meaning": "Highest severity claim",
+      "category": "Severity",
+      "mapsTo": {
+        "column": "severity",
+        "value": "Critical"
+      }
+    },
+    {
+      "term": "high",
+      "meaning": "High severity claim",
+      "category": "Severity",
+      "mapsTo": {
+        "column": "severity",
+        "value": "High"
+      }
+    },
+    {
+      "term": "medium",
+      "meaning": "Medium severity claim",
+      "category": "Severity",
+      "mapsTo": {
+        "column": "severity",
+        "value": "Medium"
+      }
+    },
+    {
+      "term": "low",
+      "meaning": "Low severity claim",
+      "category": "Severity",
+      "mapsTo": {
+        "column": "severity",
+        "value": "Low"
+      }
+    },
+    {
+      "term": "claim cost",
+      "meaning": "Financial impact of the claim",
+      "category": "Financial",
+      "mapsTo": {
+        "column": "claim_cost"
+      }
+    },
+    {
+      "term": "cost",
+      "meaning": "Financial impact or amount",
+      "category": "Financial",
+      "mapsTo": {
+        "column": "claim_cost"
+      }
+    },
+    {
+      "term": "escalation",
+      "meaning": "Escalated issue requiring additional attention",
+      "category": "Escalation",
+      "mapsTo": {
+        "domain": "escalations",
+        "table": "claim_escalation"
+      }
+    },
+    {
+      "term": "SLA breach",
+      "meaning": "Violation of service-level agreement timeline",
+      "category": "Escalation",
+      "mapsTo": {
+        "column": "sla_breached_flag",
+        "value": "true"
+      }
+    },
+    {
+      "term": "SLA breached",
+      "meaning": "Violation of service-level agreement timeline",
+      "category": "Escalation",
+      "mapsTo": {
+        "column": "sla_breached_flag",
+        "value": "true"
+      }
+    },
+    {
+      "term": "hot button indicator",
+      "meaning": "Critical claims or escalations requiring executive attention",
+      "category": "Executive",
+      "mapsTo": {
+        "domain": "claims"
+      }
+    }
+  ]
+}

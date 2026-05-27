@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: conversational-analytics
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+  ai:
+    ollama:
+      chat:
+          model: llama3.2:3b
+          temperature: 0
+          num-predict: 1024
+server:
+  port: 8080
+
+analytics:
+  query-timeout-seconds: 10
+  max-rows: 5000
+  default-limit: 5000
+  sql-generation-mode: auto
+  allowed-tables:
+    - part_claim
+    - claim_escalation
+
+logging:
+  level:
+    com.hotbutton.analytics: INFO

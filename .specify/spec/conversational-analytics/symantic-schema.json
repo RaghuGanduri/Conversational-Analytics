@@ -1,0 +1,318 @@
+{
+  "database": "PostgreSQL",
+
+  "domains": [
+    {
+      "name": "claims",
+      "description": "Automotive OEM claims analytics"
+    },
+    {
+      "name": "escalations",
+      "description": "Claims escalation analytics"
+    }
+  ],
+
+  "tables": [
+    {
+      "tableName": "part_claim",
+
+      "description": "Contains automotive OEM claims for supplied parts",
+
+      "businessPurpose": "Tracks quality, warranty and supplier claims",
+
+      "domain": "claims",
+
+      "synonyms": [
+        "claims",
+        "quality claims",
+        "part claims",
+        "warranty claims"
+      ],
+
+      "primaryKey": "claim_id",
+
+      "dimensions": [
+        "severity",
+        "oem_name",
+        "part_number"
+      ],
+
+      "metrics": [
+        "claim_cost",
+        "claim_count"
+      ],
+
+      "columns": [
+        {
+          "name": "claim_id",
+          "type": "BIGINT",
+          "description": "Unique claim identifier",
+          "semanticType": "identifier"
+        },
+
+        {
+          "name": "part_number",
+          "type": "VARCHAR",
+          "description": "Automotive part number",
+
+          "semanticType": "dimension",
+
+          "synonyms": [
+            "part",
+            "component",
+            "part id"
+          ],
+
+          "filterable": true,
+          "groupable": true
+        },
+
+        {
+          "name": "severity",
+          "type": "VARCHAR",
+
+          "description": "Claim severity level",
+
+          "semanticType": "dimension",
+
+          "synonyms": [
+            "criticality",
+            "priority",
+            "risk level"
+          ],
+
+          "allowedValues": [
+            "Critical",
+            "High",
+            "Medium",
+            "Low"
+          ],
+
+          "filterable": true,
+          "groupable": true
+        },
+
+        {
+          "name": "oem_name",
+          "type": "VARCHAR",
+
+          "description": "OEM company name",
+
+          "semanticType": "dimension",
+
+          "synonyms": [
+            "OEM",
+            "manufacturer",
+            "customer"
+          ],
+
+          "allowedValues": [
+            "Honda",
+            "Ford",
+            "GM",
+            "Stellantis"
+          ],
+
+          "filterable": true,
+          "groupable": true
+        },
+
+        {
+          "name": "claim_cost",
+          "type": "DECIMAL",
+
+          "description": "Financial impact of claim",
+
+          "semanticType": "metric",
+
+          "synonyms": [
+            "cost",
+            "financial impact",
+            "claim amount"
+          ],
+
+          "aggregations": [
+            "SUM",
+            "AVG",
+            "MAX",
+            "MIN"
+          ],
+
+          "aggregatable": true
+        },
+
+        {
+          "name": "repeat_issue_flag",
+          "type": "BOOLEAN",
+
+          "description": "Indicates repeat issue claims",
+
+          "semanticType": "filter",
+
+          "synonyms": [
+            "repeat issue",
+            "recurring issue"
+          ],
+
+          "filterable": true
+        },
+
+        {
+          "name": "warranty_indicator",
+          "type": "BOOLEAN",
+
+          "description": "Indicates warranty claim",
+
+          "semanticType": "filter",
+
+          "synonyms": [
+            "warranty",
+            "warranty claim"
+          ],
+
+          "filterable": true
+        },
+
+        {
+          "name": "supplier_responsibility_pct",
+          "type": "DECIMAL",
+
+          "description": "Supplier responsibility percentage",
+
+          "semanticType": "metric",
+
+          "synonyms": [
+            "supplier responsibility",
+            "responsibility percentage"
+          ],
+
+          "aggregatable": true
+        }
+      ]
+    },
+
+    {
+      "tableName": "claim_escalation",
+
+      "description": "Tracks escalations associated with claims",
+
+      "businessPurpose": "Tracks critical escalation workflows",
+
+      "domain": "escalations",
+
+      "synonyms": [
+        "escalations",
+        "critical escalations",
+        "management escalations"
+      ],
+
+      "primaryKey": "escalation_id",
+
+      "foreignKeys": [
+        {
+          "column": "claim_id",
+          "references": {
+            "table": "part_claim",
+            "column": "claim_id"
+          }
+        }
+      ],
+
+      "dimensions": [
+        "escalation_status",
+        "executive_review_required"
+      ],
+
+      "metrics": [
+        "escalation_aging"
+      ],
+
+      "columns": [
+        {
+          "name": "escalation_id",
+          "type": "BIGINT",
+
+          "description": "Unique escalation identifier",
+
+          "semanticType": "identifier"
+        },
+
+        {
+          "name": "claim_id",
+          "type": "BIGINT",
+
+          "description": "Associated claim id",
+
+          "semanticType": "relationship"
+        },
+
+        {
+          "name": "sla_breached_flag",
+          "type": "BOOLEAN",
+
+          "description": "Indicates SLA breach",
+
+          "semanticType": "filter",
+
+          "synonyms": [
+            "SLA breached",
+            "breached escalation"
+          ],
+
+          "filterable": true
+        },
+
+        {
+          "name": "escalation_aging",
+          "type": "INTEGER",
+
+          "description": "Number of unresolved days",
+
+          "semanticType": "metric",
+
+          "synonyms": [
+            "aging",
+            "escalation age"
+          ],
+
+          "aggregations": [
+            "AVG",
+            "MAX"
+          ],
+
+          "aggregatable": true
+        },
+
+        {
+          "name": "critical_escalation_indicator",
+          "type": "BOOLEAN",
+
+          "description": "Indicates critical escalation",
+
+          "semanticType": "filter",
+
+          "synonyms": [
+            "critical escalation"
+          ],
+
+          "filterable": true
+        },
+
+        {
+          "name": "executive_review_required",
+          "type": "BOOLEAN",
+
+          "description": "Indicates executive review requirement",
+
+          "semanticType": "filter",
+
+          "synonyms": [
+            "executive review"
+          ],
+
+          "filterable": true
+        }
+      ]
+    }
+  ]
+}

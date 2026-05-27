@@ -1,0 +1,117 @@
+{
+  "database": "claims_analytics",
+  "tables": [
+    {
+      "tableName": "part_claim",
+      "description": "Contains automotive OEM claims for supplied parts",
+      "businessPurpose": "Tracks supplier quality and warranty claims",
+      "dimensions": [
+        "severity",
+        "oem_name",
+        "part_number"
+      ],
+      "metrics": [
+        "claim_cost"
+      ],
+      "columns": [
+        {
+          "name": "claim_id",
+          "type": "BIGINT",
+          "description": "Unique claim identifier",
+          "semanticType": "identifier"
+        },
+        {
+          "name": "part_number",
+          "type": "VARCHAR",
+          "description": "Automotive part number",
+          "semanticType": "dimension",
+          "groupable": true,
+          "filterable": true
+        },
+        {
+          "name": "severity",
+          "type": "VARCHAR",
+          "description": "Claim severity level",
+          "semanticType": "dimension",
+          "groupable": true,
+          "filterable": true,
+          "allowedValues": [
+            "Critical",
+            "High",
+            "Medium",
+            "Low"
+          ],
+          "synonyms": [
+            "priority",
+            "risk"
+          ]
+        },
+        {
+          "name": "oem_name",
+          "type": "VARCHAR",
+          "description": "OEM company name",
+          "semanticType": "dimension",
+          "groupable": true,
+          "filterable": true,
+          "allowedValues": [
+            "Honda",
+            "Ford",
+            "Toyota",
+            "Nissan"
+          ],
+          "synonyms": [
+            "OEM",
+            "manufacturer",
+            "car maker"
+          ]
+        },
+        {
+          "name": "claim_cost",
+          "type": "DECIMAL",
+          "description": "Financial impact of claim",
+          "semanticType": "metric",
+          "aggregatable": true,
+          "aggregations": [
+            "SUM",
+            "AVG",
+            "MAX"
+          ]
+        }
+      ],
+      "foreignKeys": []
+    },
+    {
+      "tableName": "claim_escalation",
+      "description": "Tracks escalations for claims",
+      "businessPurpose": "Tracks SLA breaches and escalations",
+      "dimensions": [
+        "sla_breached_flag"
+      ],
+      "metrics": [],
+      "columns": [
+        {
+          "name": "escalation_id",
+          "type": "BIGINT",
+          "description": "Unique escalation identifier",
+          "semanticType": "identifier"
+        },
+        {
+          "name": "sla_breached_flag",
+          "type": "BOOLEAN",
+          "description": "Indicates SLA breach",
+          "semanticType": "dimension",
+          "groupable": true,
+          "filterable": true
+        }
+      ],
+      "foreignKeys": [
+        {
+          "sourceColumn": "claim_id",
+          "targetTable": "part_claim",
+          "targetColumn": "claim_id",
+          "relationshipType": "MANY_TO_ONE"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\src",
+    "\\backend\\src\\main",
+    "\\backend\\src\\main\\java",
+    "\\backend\\src\\main\\java\\com",
+    "\\backend\\src\\main\\java\\com\\hotbutton",
+    "\\backend\\src\\main\\java\\com\\hotbutton\\analytics",
+    "\\backend\\src\\main\\java\\com\\hotbutton\\analytics\\model",
+    "\\backend\\src\\main\\java\\com\\hotbutton\\analytics\\service"
+  ],
+  "SelectedNode": "\\.specify\\spec",
+  "PreviewInSolutionExplorer": false
+}
